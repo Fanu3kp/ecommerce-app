@@ -11,11 +11,13 @@ spring:
     virtual:
       enabled: true
   datasource:
+    url: jdbc:postgresql://dpg-d4070jre5dus73862kf0-a.oregon-postgres.render.com:5432/codecake?sslmode=require
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
     hikari:
       poolName: Hikari
       auto-commit: false
-    driver-class-name: org.postgresql.Driver
-    type: com.zaxxer.hikari.HikariDataSource
   data:
     jpa:
       repositories:
@@ -45,7 +47,6 @@ spring:
     change-log: classpath:db/changelog/master.xml
     default-schema: ecommerce_yt
     contexts: dev
-  #    drop-first: true
   security:
     oauth2:
       resourceserver:
@@ -84,3 +85,4 @@ application:
   stripe:
     api-key: ${STRIPE_API_KEY}
     webhook-secret: ${STRIPE_WEBHOOK_SECRET}
+
